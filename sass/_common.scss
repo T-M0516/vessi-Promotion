@@ -1,0 +1,73 @@
+@charset 'utf-8';
+
+@use './mixins' as *;
+@use './variables';
+
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+
+    body {
+        color: var(--text-color);
+        background-color: var(--body-color);
+        font-family: 'Noto Sans JP', sans-serif;
+        max-width: 100%;
+
+        word-break: break-all;
+        // width: calc(100vw - calc(100vw - 100%));
+
+        h1 {
+            font-size: clamp(28px, 3.5rem, 64px);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            font-size: clamp(18px, 2rem, 48px);
+            letter-spacing: 0.1em;
+        }
+
+        h3 {
+            font-size: clamp(13px, 1.5rem, 36px);
+            letter-spacing: 0.1em;
+        }
+
+        h4 {
+            font-size: clamp(12px, 1.2rem, 27px);
+            letter-spacing: 0.1em;
+        }
+
+        p {
+            font-size: clamp(11px, 1.1rem, 24px);
+            letter-spacing: 0.1em;
+            line-height: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        svg{
+            
+        }
+
+        ul {
+            list-style: none;
+        }
+    }
+}
