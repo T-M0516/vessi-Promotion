@@ -9,6 +9,87 @@
   --hover-bk: rgb(189, 189, 189);
 }
 
+.lineAnimation {
+  position: relative;
+}
+.lineAnimation.isActive::after {
+  width: 100%;
+}
+.lineAnimation::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.3rem;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 4px;
+  background: var(--main-color);
+  transition: all 1s;
+}
+
+.uLine-text {
+  position: relative;
+}
+.uLine-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.1rem;
+  width: 0%;
+  height: 2px;
+  background: var(--main-color);
+  transition: all 1s;
+}
+
+.uLineAnimation:hover .uLine-text:after {
+  width: 100%;
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.5s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
+}
+
+.hvr-rectangle-out {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  background: #e1e1e1;
+  transition-property: color;
+  transition-duration: 0.5s;
+}
+
+.hvr-rectangle-out:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgb(96, 171, 248) 0%, rgb(155, 201, 247) 28%, rgb(155, 201, 247) 18%, rgba(255, 255, 255, 0) 70%);
+  transform: scale(0);
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+}
+
+.hvr-rectangle-out:hover:before,
+.hvr-rectangle-out:focus:before,
+.hvr-rectangle-out:active:before {
+  transform: scale(1);
+}
+
 *,
 *::before,
 *::after {
@@ -17,9 +98,22 @@
   padding: 0;
 }
 
+/* ------- slide ------- */
+.slider {
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.slider img {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 html body {
   color: var(--text-color);
@@ -29,23 +123,23 @@ html body {
   word-break: break-all;
 }
 html body h1 {
-  font-size: clamp(28px, 3.5rem, 64px);
+  font-size: clamp(28px, 5vw, 64px);
   letter-spacing: 0.1em;
 }
 html body h2 {
-  font-size: clamp(18px, 2rem, 48px);
+  font-size: clamp(18px, 3.5vw, 48px);
   letter-spacing: 0.1em;
 }
 html body h3 {
-  font-size: clamp(13px, 1.5rem, 36px);
+  font-size: clamp(13px, 1.8vw, 36px);
   letter-spacing: 0.1em;
 }
 html body h4 {
-  font-size: clamp(12px, 1.2rem, 27px);
+  font-size: clamp(12px, 1.5vw, 27px);
   letter-spacing: 0.1em;
 }
 html body p {
-  font-size: clamp(11px, 1.1rem, 24px);
+  font-size: clamp(11px, 1.3vw, 24px);
   letter-spacing: 0.1em;
   line-height: 1.5rem;
 }
@@ -57,18 +151,22 @@ html body img {
   display: block;
   max-width: 100%;
 }
+html body svg {
+  max-width: 100%;
+}
 html body ul {
   list-style: none;
 }
 
 .mv {
-  margin-top: 80px;
   width: 100%;
   max-width: 100%;
   display: grid;
   position: relative;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  text-align: center;
 }
 .mv .mv-text {
   z-index: 100;
@@ -76,6 +174,10 @@ html body ul {
   grid-column: 1/5;
   grid-row: 2;
   color: var(--body-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .mv .mv-text svg {
   width: 25%;
@@ -87,40 +189,62 @@ html body ul {
   max-width: 100%;
   grid-column: 1/5;
   grid-row: 1/4;
+  overflow-x: hidden;
 }
 .mv .mv-area .mv-item {
   width: 100%;
 }
+.mv .slider > .mv-item:not(:first-child) {
+  display: none;
+}
 
 .introduction-section {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-basis: 50%;
   width: 100%;
-  height: 100vh;
   margin: 100px auto 200px;
 }
 .introduction-section h2 {
   display: inline-block;
-}
-.introduction-section div p {
-  line-height: 2.5rem;
+  margin-bottom: 65px;
 }
 .introduction-section .introduction-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  height: 100%;
+  padding: 0 100px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  row-gap: 10%;
+}
+.introduction-section .introduction-container p {
+  line-height: 2.5rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+.introduction-section .introduction-container .introduction-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr;
   background-image: url("../img/KidsWeekendSteelGreySideViewLeftTransparentWithShadow.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(253, 253, 253, 0.4);
-  height: 50%;
   background-blend-mode: lighten;
+  grid-column: 1;
+  grid-row: 2;
+  height: 100%;
+  place-items: center;
+  line-height: 2.5rem;
+}
+.introduction-section .introduction-container .introduction-content p {
+  grid-column: 1;
+  grid-row: 1;
+}
+.introduction-section .introduction-container .introduction-content p:last-of-type {
+  grid-column: 1;
+  grid-row: 2;
+  position: relative;
+  top: -15%;
 }
 
 .feature-section {
@@ -133,7 +257,7 @@ html body ul {
 }
 .feature-section .feature-container {
   display: grid;
-  grid-template-columns: 2fr 2fr 0.7fr 2fr;
+  grid-template-columns: 2fr 2fr 0.2fr 2fr;
   grid-template-rows: 0.1fr 0.3fr 0.25fr 1fr;
   text-align: left;
   padding: 0 100px;
@@ -157,6 +281,7 @@ html body ul {
   object-fit: cover;
 }
 .feature-section .feature-container img:last-of-type {
+  margin-left: 5%;
   grid-column: 4;
   grid-row: 1/4;
 }
@@ -229,6 +354,7 @@ html body ul {
   width: 100%;
   grid-column: 1/3;
   grid-row: 4;
+  margin-left: 0;
 }
 
 .technology-section {
@@ -298,8 +424,8 @@ html body ul {
   width: 100%;
   max-width: 100%;
   font-weight: bold;
-  font-size: 1.3rem;
-  line-height: 1.5rem;
+  font-size: clamp(16px, 1vw, 32px);
+  line-height: 1.1em;
   position: absolute;
   padding: 10px;
   margin: 0;
@@ -315,7 +441,8 @@ html body ul {
   grid-row: 1/3;
 }
 .shoes-section .shoes-container .container-item .weekend a p {
-  font-size: 2.5rem;
+  line-height: 1.1em;
+  font-size: clamp(16px, 3vw, 48px);
 }
 .shoes-section .shoes-container .container-item .altaHighTop {
   grid-column: 3;
@@ -354,8 +481,8 @@ html body ul {
   grid-row: 3/5;
 }
 .shoes-section .shoes-container .container-item .sohoSneaker-NarrowFit a p {
-  line-height: 2.5rem;
-  font-size: 2.5rem;
+  line-height: 1.1em;
+  font-size: clamp(16px, 3vw, 48px);
 }
 
 .faq-section {
@@ -418,44 +545,11 @@ html body ul {
   background-color: rgba(253, 253, 253, 0.4);
   background-blend-mode: lighten;
 }
+.founders-section h2 {
+  font-size: clamp(11px, 1.5vw, 24px);
+}
 .founders-section P {
   line-height: 2.5rem;
-}
-
-.lineAnimation {
-  position: relative;
-}
-.lineAnimation.isActive::after {
-  width: 100%;
-}
-.lineAnimation::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  transform: translateX(-50%);
-  width: 0%;
-  height: 4px;
-  background: var(--main-color);
-  transition: all 1s;
-}
-
-.uLine-text {
-  position: relative;
-}
-.uLine-text::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.1rem;
-  width: 0%;
-  height: 2px;
-  background: var(--main-color);
-  transition: all 1s;
-}
-
-.uLineAnimation:hover .uLine-text:after {
-  width: 100%;
 }
 
 header .header-container {
@@ -637,19 +731,23 @@ header .header-container a img {
 
 footer {
   width: 100%;
-  height: 330px;
+  height: 250px;
+  margin-bottom: 80px;
   background-color: var(--main-color);
   text-align: center;
+  position: relative;
 }
 footer img {
   height: 30%;
-  width: 30%;
+  width: 20%;
   object-fit: cover;
   margin: 0 auto;
   position: relative;
   top: 10%;
 }
 footer .btn {
+  grid-column: 2;
+  grid-row: 2;
   color: var(--body-color);
   padding: 10px 20px;
   display: inline-block;
@@ -657,7 +755,7 @@ footer .btn {
   font-weight: bold;
   border: 1px solid var(--body-color);
   border-radius: 30px;
-  margin: 0 auto;
+  margin: 1%;
   position: relative;
   top: 15%;
 }
@@ -668,12 +766,15 @@ footer .btn:hover {
   transition: all 0.6s;
 }
 footer .sns-container {
+  grid-column: 1;
+  grid-row: 3;
   display: flex;
   flex-direction: column;
   justify-content: start;
   width: 30%;
-  margin: 0 0 0 50px;
-  height: 40%;
+  margin: 0 0 0 3%;
+  position: absolute;
+  top: 65%;
 }
 footer .sns-container p {
   color: var(--body-color);

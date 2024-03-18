@@ -5,6 +5,7 @@
 
 
 
+
 *,
 *::before,
 *::after {
@@ -13,41 +14,55 @@
     padding: 0;
 }
 
+/* ------- slide ------- */
+.slider {
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    img {
+        width: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+}
+
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+
 
     body {
         color: var(--text-color);
         background-color: var(--body-color);
         font-family: 'Noto Sans JP', sans-serif;
         max-width: 100%;
-
         word-break: break-all;
         // width: calc(100vw - calc(100vw - 100%));
 
         h1 {
-            font-size: clamp(28px, 3.5rem, 64px);
+            font-size: clamp(28px, 5vw, 64px);
             letter-spacing: 0.1em;
         }
 
         h2 {
-            font-size: clamp(18px, 2rem, 48px);
+            font-size: clamp(18px, 3.5vw, 48px);
             letter-spacing: 0.1em;
         }
 
         h3 {
-            font-size: clamp(13px, 1.5rem, 36px);
+            font-size: clamp(13px, 1.8vw, 36px);
             letter-spacing: 0.1em;
         }
 
         h4 {
-            font-size: clamp(12px, 1.2rem, 27px);
+            font-size: clamp(12px, 1.5vw, 27px);
             letter-spacing: 0.1em;
         }
 
         p {
-            font-size: clamp(11px, 1.1rem, 24px);
+            font-size: clamp(11px, 1.3vw, 24px);
             letter-spacing: 0.1em;
             line-height: 1.5rem;
         }
@@ -62,8 +77,8 @@ html {
             max-width: 100%;
         }
 
-        svg{
-            
+        svg {
+            max-width: 100%;
         }
 
         ul {

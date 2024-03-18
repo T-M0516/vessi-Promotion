@@ -1,4 +1,9 @@
-$('.slider').slick({
+$(function() {
+	$('.slider').on('init', function(event, slick){
+		console.log('.slider');
+		AOS.init(); // ここにAOSの命令やプログラムを書く
+	});
+	$('.slider').slick({ 
     fade:true,//切り替えをフェードで行う。初期値はfalse。
     autoplay: true,//自動的に動き出すか。初期値はfalse。
     autoplaySpeed: 3000,//次のスライドに切り替わる待ち時間
@@ -7,8 +12,15 @@ $('.slider').slick({
     pauseOnFocus: false,//フォーカスで一時停止を無効
     pauseOnHover: false,//マウスホバーで一時停止を無効
     pauseOnDotsHover: false,//ドットナビゲーションをマウスホバーで一時停止を無効
+	});
 });
 
+// $('.slider').slick({
+// });
+
+// $(window).on('scroll',function(){
+//   AOS.init();
+// });
 
 
 

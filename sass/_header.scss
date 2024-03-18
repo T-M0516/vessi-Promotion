@@ -3,48 +3,6 @@
 @use './mixins' as *;
 @use './variables';
 
-// 見出し下線アニメーション
-.lineAnimation {
-    position: relative;
-
-    &.isActive::after {
-        width: 100%;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: -0.3rem;
-        transform: translateX(-50%);
-        width: 0%;
-        height: 4px;
-        background: var(--main-color);
-        transition: all 1s;
-    }
-
-}
-
-//////////////////////////
-// ナビ下線アニメーション
-.uLine-text {
-    position: relative;
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -0.1rem;
-        width: 0%;
-        height: 2px;
-        background: var(--main-color);
-        transition: all 1s;
-    }
-}
-
-.uLineAnimation:hover .uLine-text:after {
-    width: 100%;
-}
 
 //////////////////////////
 // ヘッダー

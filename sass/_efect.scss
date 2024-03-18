@@ -1,0 +1,106 @@
+@charset 'utf-8';
+
+@use './mixins' as *;
+@use './variables';
+
+// 見出し下線アニメーション
+.lineAnimation {
+    position: relative;
+
+    &.isActive::after {
+        width: 100%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -0.3rem;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 4px;
+        background: var(--main-color);
+        transition: all 1s;
+    }
+
+}
+
+//////////////////////////
+// ナビ下線アニメーション
+.uLine-text {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -0.1rem;
+        width: 0%;
+        height: 2px;
+        background: var(--main-color);
+        transition: all 1s;
+    }
+}
+
+.uLineAnimation:hover .uLine-text:after {
+    width: 100%;
+}
+
+//////////////////////////
+// grow
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    // box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition-duration: 0.5s;
+    transition-property: transform;
+
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+
+//////////////////////////
+// rectangle
+.hvr-rectangle-out {
+    display: inline-block;
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    // box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    background: #e1e1e1;
+    transition-property: color;
+    transition-duration: 0.5s;
+}
+
+.hvr-rectangle-out:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background: #2098D1;
+    background: radial-gradient(ellipse at center, rgba(96, 171, 248, 1) 0%, rgba(155, 201, 247, 1) 28%, rgba(155, 201, 247, 1) 18%, rgb(255, 255, 255, 0) 70%);
+    transform: scale(0);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+// .hvr-rectangle-out:hover,
+// .hvr-rectangle-out:focus,
+// .hvr-rectangle-out:active {
+//     color: white;
+// }
+
+.hvr-rectangle-out:hover:before,
+.hvr-rectangle-out:focus:before,
+.hvr-rectangle-out:active:before {
+    transform: scale(1);
+}
