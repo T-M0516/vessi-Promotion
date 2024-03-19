@@ -736,6 +736,7 @@
 
     h2 {
         font-size: clamp(14px, 1.5vw, 24px);
+        margin-bottom: 5%;
 
         @include mq {
             margin: 20px;
@@ -744,6 +745,7 @@
 
     P {
         line-height: 2.5em;
+        margin-bottom: 3%;
 
         @include mq {
             padding: 15px 5px;
