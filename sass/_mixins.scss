@@ -5,3 +5,8 @@
         @content;
     }
 }
+
+@mixin s-br() {
+    content: "\A";
+    white-space: pre;
+}

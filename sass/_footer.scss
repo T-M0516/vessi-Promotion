@@ -11,9 +11,13 @@ footer {
     background-color: var(--main-color);
     text-align: center;
     position: relative;
+
     // display: grid;
     // grid-template-columns: repeat(3, 1fr);
     // grid-template-rows: repeat(3, 1fr);
+    @include mq {
+        margin-bottom: 65px;
+    }
 
     img {
         height: 30%;
@@ -24,6 +28,11 @@ footer {
         margin: 0 auto;
         position: relative;
         top: 10%;
+
+        @include mq {
+            width: 90%;
+            top: 5%;
+        }
     }
 
     .btn {
@@ -39,6 +48,11 @@ footer {
         margin: 1%;
         position: relative;
         top: 15%;
+
+        @include mq {
+            margin: 5%;
+            top: 5%;
+        }
 
         &:hover {
             color: var(--main-color);
@@ -56,19 +70,29 @@ footer {
         justify-content: start;
         width: 30%;
         margin: 0 0 0 3%;
-        // height: 50%;
+        height: 50%;
         position: absolute;
         top: 65%;
+
+        @include mq {
+            width: 100%;
+            margin: 0;
+            align-items: center;
+        }
 
         p {
             color: var(--body-color);
             width: 50%;
-            // font-size: 1.3rem;
             font-weight: bold;
             letter-spacing: 0.1em;
             margin: 5px 0;
             border-bottom: 1px solid var(--body-color);
             text-align: left;
+
+            @include mq {
+                text-align: center;
+                font-size: clamp(16px, 1.3vw, 24px);
+            }
         }
 
         .sns-icon {
@@ -78,6 +102,8 @@ footer {
             gap: 10px;
             width: 50%;
             height: 20%;
+
+
 
             li {
                 width: 100%;
@@ -119,11 +145,19 @@ footer {
         left: 0;
         bottom: 0;
 
+        @include mq {
+            height: 65px;
+        }
+
         a {
             display: block;
             width: 10%;
             height: 75%;
             margin: 0 auto;
+
+            @include mq {
+                width: 20%;
+            }
 
             img {
                 width: 100%;

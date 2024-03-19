@@ -41,14 +41,27 @@ html {
         word-break: break-all;
         // width: calc(100vw - calc(100vw - 100%));
 
+        section {
+            margin-bottom: 200px;
+
+            @include mq {
+                margin-bottom: 60px;
+            }
+        }
+
         h1 {
             font-size: clamp(28px, 5vw, 64px);
             letter-spacing: 0.1em;
         }
 
         h2 {
-            font-size: clamp(18px, 3.5vw, 48px);
+            font-size: clamp(17px, 3.5vw, 48px);
             letter-spacing: 0.1em;
+            margin-bottom: 75px;
+
+            @include mq {
+                margin-bottom: 20px;
+            }
         }
 
         h3 {
@@ -62,9 +75,9 @@ html {
         }
 
         p {
-            font-size: clamp(11px, 1.3vw, 24px);
+            font-size: clamp(12px, 1.3vw, 24px);
             letter-spacing: 0.1em;
-            line-height: 1.5rem;
+            line-height: 2em;
         }
 
         a {
