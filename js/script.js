@@ -15,15 +15,6 @@ $(function() {
 	});
 });
 
-// $('.slider').slick({
-// });
-
-// $(window).on('scroll',function(){
-//   AOS.init();
-// });
-
-
-
 // スクロール時に出現する見出し下線アニメーション
 $(window).on('scroll',function(){
     $(".lineAnimation").each(function(){
@@ -36,6 +27,20 @@ $(window).on('scroll',function(){
     });
   });
 
+  // TOPボタン出現アクション
+  window.onscroll = function () {
+    scrollToggleClass(".feature-section", ".top-btn-container", "top-btn-show");
+  }
+  function scrollToggleClass(rangeTarget, addTarget, classname) {
+    if($(rangeTarget).length){
+      scroll = $(window).scrollTop();
+      startPos = $(rangeTarget).offset().top;
+      endPos = startPos + $(rangeTarget).outerHeight();
+      if (scroll > startPos && scroll < endPos) {
+          $(addTarget).addClass(classname);
+      }
+    }
+  }
 
 // ハンバーガーメニュー
   $(".nav-btn").click(function () {//ボタンがクリックされたら

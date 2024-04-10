@@ -144,6 +144,14 @@ footer {
         z-index: 400;
         left: 0;
         bottom: 0;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all .5s ease;
+
+        &.top-btn-show {
+            opacity: 1;
+            transform: none;
+        }
 
         @include mq {
             height: 65px;
